@@ -28,7 +28,7 @@
 </svelte:head>
 
 <section>
-	<div class="flex flex-col h-screen static p-4">
+	<div class="flex flex-col h-screen static py-4">
 		<h1 class="text-center text-6xl font-semibold pb-4">CheapGPT</h1>
 		{#if requestApiKey}
 			<article class="prose">

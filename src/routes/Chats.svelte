@@ -9,8 +9,6 @@
 	{:else}
 		{#each $chats as chat}
 			<ChatText {chat} />
-			<hr />
-			<br />
 		{/each}
 	{/if}
 </div>
