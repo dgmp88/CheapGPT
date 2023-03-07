@@ -16,26 +16,9 @@
 </script>
 
 <div class="absolute bottom-0 left-0 w-full p-3 flex">
-	<!-- <input
-		class="input w-full input-bordered min-w-xs"
-		type="text"
-		placeholder=""
-		bind:value
-		bind:this={inputElement}
-		on:keydown={(event) => {
-			// if (event.key == 'Enter' && !event.shiftKey) {
-			// 	event.preventDefault();
-			// 	if (!disabled) {
-			// 		onComplete(value);
-			// 		value = '';
-			// 	}
-			// }
-		}}
-	/> -->
-
 	<label class="input-sizer stacked w-full">
 		<textarea
-			class="textarea"
+			class="textarea textarea-primary"
 			bind:this={inputElement}
 			on:input={(event) => {
 				if (inputElement.parentNode) {
@@ -72,9 +55,10 @@
 </div>
 
 <style>
+	/* https://css-tricks.com/auto-growing-inputs-textareas/ */
+	/* Modified from  */
 	/* https://codepen.io/shshaw/pen/bGNJJBE */
 
-	/* https://css-tricks.com/auto-growing-inputs-textareas/ */
 	.input-sizer {
 		display: inline-grid;
 		vertical-align: top;
@@ -94,7 +78,6 @@
 		min-width: 1em;
 		font: inherit;
 		resize: none;
-		border: none;
 	}
 
 	.stacked {
