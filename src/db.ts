@@ -5,17 +5,16 @@ import Dexie, { type Table } from 'dexie';
 export interface ChatLog {
 	id: string;
 	chats: Chat[];
+	timestamp: Date;
 }
 
 export class ChatsDb extends Dexie {
-	// 'friends' is added by dexie when declaring the stores()
-	// We just tell the typing system this is the case
 	chats!: Table<ChatLog>;
 
 	constructor() {
 		super('myDatabase');
-		this.version(1).stores({
-			chats: '++id' // Primary key and indexed props
+		this.version(2).stores({
+			chats: '++id,timestamp' // Primary key and indexed props
 		});
 	}
 }

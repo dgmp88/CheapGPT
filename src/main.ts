@@ -4,6 +4,7 @@ import { get } from 'svelte/store';
 
 import type { Chat } from './types';
 import chats from './routes/stores';
+import { db } from './db';
 
 export async function getResults() {
 	const body = {
@@ -39,7 +40,7 @@ export async function getResults() {
 			}
 
 			if (!chat.id) {
-				chat.id = response.id;
+				chat.id = response.id as string;
 				chat.content = ''; // clear placeholder
 			}
 
@@ -48,8 +49,9 @@ export async function getResults() {
 			if (typeof text === 'string') {
 				chat.content += text;
 			}
-
-			chats.update((chats) => [...chats.slice(0, -1), chat]);
+			const newChat = [...get(chats).slice(0, -1), chat];
+			chats.update(() => newChat);
+			db.chats.put({ id: chat.id, chats: newChat, timestamp: new Date() });
 		},
 		onerror(err) {
 			ctrl.abort();
