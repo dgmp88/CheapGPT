@@ -6,5 +6,5 @@
 </script>
 
 <div class={`whitespace-pre-wrap p-4 ${styles}`}>
-	{chat.content}
+	{chat.content.trim()}
 </div>
