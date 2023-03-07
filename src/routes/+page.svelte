@@ -29,13 +29,11 @@
 	<meta name="description" content="CheapGPT" />
 </svelte:head>
 
-<section>
-	<div class="flex flex-col h-screen static py-4">
-		{#if requestApiKey}
-			<Intro onSubmit={onSubmitApiKey} />
-		{:else}
-			<Chats />
-			<TextInput onComplete={onEnterChatText} />
-		{/if}
-	</div>
-</section>
+<div class="flex flex-col py-4">
+	{#if requestApiKey}
+		<Intro onSubmit={onSubmitApiKey} />
+	{:else}
+		<Chats />
+		<TextInput onComplete={onEnterChatText} />
+	{/if}
+</div>

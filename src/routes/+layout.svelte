@@ -1,11 +1,12 @@
 <script>
+	import Drawer from './Drawer.svelte';
 	import Header from './Header.svelte';
 	import './styles.css';
 </script>
 
-<div class="app">
-	<Header />
-	<main>
+<Drawer>
+	<div class="h-screen relative">
+		<Header />
 		<slot />
-	</main>
-</div>
+	</div>
+</Drawer>

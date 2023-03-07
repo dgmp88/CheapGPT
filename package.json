@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@microsoft/fetch-event-source": "^2.0.1",
-		"daisyui": "^2.51.3"
+		"daisyui": "^2.51.3",
+		"dexie": "^3.2.3"
 	}
 }
