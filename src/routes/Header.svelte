@@ -3,7 +3,7 @@
 	import Hamburger from '$lib/images/Hamburger.svelte';
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 bg-opacity-50">
 	<label for="drawer" class="btn btn-ghost drawer-button lg:hidden">
 		<Hamburger class="w-10 h-10" />
 	</label>

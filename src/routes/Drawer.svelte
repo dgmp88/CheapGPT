@@ -18,13 +18,13 @@
 {#if $chatHistory && $chatHistory.length > 0}
 	<div class="drawer drawer-mobile">
 		<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked />
-		<div class="drawer-content">
+		<div id="bg" class="drawer-content">
 			<slot />
 		</div>
 
 		<div class="drawer-side">
 			<label for="drawer" class="drawer-overlay" />
-			<ul class="menu p-4 w-80 bg-gray-800 bg-opacity-90 text-base-content overflow-hidden">
+			<ul class="menu p-4 w-80 bg-gray-800 bg-opacity-60 text-base-content overflow-hidden">
 				<li class="text-center">
 					<button
 						class="mx-auto btn font-bold"
@@ -57,3 +57,11 @@
 {:else}
 	<slot />
 {/if}
+
+<style>
+	#bg {
+		background-image: url('background.svg');
+		background-size: cover;
+		background-position: center;
+	}
+</style>
