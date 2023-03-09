@@ -1,7 +1,5 @@
 <script lang="ts">
 	import TextInput from './TextInput.svelte';
-
-	export let onSubmit: (apiKey: string) => void;
 </script>
 
 <article class="prose p-4">
@@ -50,4 +48,3 @@
 		</div>
 	</label>
 </article>
-<TextInput onComplete={onSubmit} />

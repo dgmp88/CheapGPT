@@ -1,6 +1,5 @@
-import type { Chat } from './types';
-
 import Dexie, { type Table } from 'dexie';
+import type { Chat } from './types';
 
 export interface ChatLog {
 	id: string;

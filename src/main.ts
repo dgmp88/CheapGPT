@@ -7,9 +7,10 @@ import chats from './routes/stores';
 import { db } from './db';
 
 export async function getResults() {
+	const currentChats = get(chats);
 	const body = {
 		model: 'gpt-3.5-turbo',
-		messages: get(chats).map((chat) => ({ role: chat.role, content: chat.content })),
+		messages: currentChats.map((chat) => ({ role: chat.role, content: chat.content })),
 		stream: true
 	};
 
@@ -21,8 +22,16 @@ export async function getResults() {
 	};
 	const url = 'https://api.openai.com/v1/chat/completions';
 
-	const chat: Chat = { role: 'assistant', content: '...', id: undefined };
-	chats.update((chats) => [...chats, chat]);
+	// Create a new chat
+	// The ID could be null until at least 1 response has come through
+	let id = currentChats.find((chat) => chat.id)?.id;
+	const chat: Chat = {
+		role: 'assistant',
+		content: '...',
+		id,
+		timestamp: new Date()
+	};
+	chats.update(() => [...currentChats, chat]);
 
 	const ctrl = new AbortController();
 
@@ -39,9 +48,10 @@ export async function getResults() {
 				ctrl.abort();
 			}
 
-			if (!chat.id) {
-				chat.id = response.id as string;
+			if (!id) {
+				id = response.id as string;
 				chat.content = ''; // clear placeholder
+				chat.id = id;
 			}
 
 			const text = choice.delta.content;
@@ -51,7 +61,7 @@ export async function getResults() {
 			}
 			const newChat = [...get(chats).slice(0, -1), chat];
 			chats.update(() => newChat);
-			db.chats.put({ id: chat.id, chats: newChat, timestamp: new Date() });
+			db.chats.put({ id, chats: newChat, timestamp: new Date() });
 		},
 		onerror(err) {
 			ctrl.abort();

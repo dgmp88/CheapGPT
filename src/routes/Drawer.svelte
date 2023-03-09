@@ -9,16 +9,15 @@
 	let chatHistory = liveQuery(async () => {
 		if (!browser) return [];
 		// Sort by time
-		return await db.chats.orderBy('timestamp').reverse().toArray();
+		const results = await db.chats.orderBy('timestamp').reverse().toArray();
+		return results;
 	});
-
-	console.log($chatHistory);
 </script>
 
 {#if $chatHistory && $chatHistory.length > 0}
 	<div class="drawer drawer-mobile">
 		<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked />
-		<div id="bg" class="drawer-content">
+		<div class="drawer-content">
 			<slot />
 		</div>
 
@@ -36,17 +35,17 @@
 						+ New Chat
 					</button>
 				</li>
-				{#each $chatHistory as chat (chat.id)}
+				{#each $chatHistory as chatLog}
 					<li class="max-w-full">
 						<button
 							class="max-w-full"
 							on:click={() => {
-								chats.update(() => chat.chats);
+								chats.update(() => chatLog.chats);
 								checked = false;
 							}}
 						>
 							<p class="truncate">
-								{chat.chats[0].content}
+								{chatLog.chats[0].content}
 							</p>
 						</button>
 					</li>
@@ -57,11 +56,3 @@
 {:else}
 	<slot />
 {/if}
-
-<style>
-	#bg {
-		background-image: url('background.svg');
-		background-size: cover;
-		background-position: center;
-	}
-</style>

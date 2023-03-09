@@ -15,7 +15,7 @@
 	textFocus();
 </script>
 
-<div class="absolute bottom-0 left-0 w-full p-3 flex">
+<div class="mt-auto w-full p-3 flex">
 	<label class="input-sizer stacked w-full">
 		<textarea
 			class="textarea textarea-primary"

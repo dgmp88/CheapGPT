@@ -29,11 +29,21 @@
 	<meta name="description" content="CheapGPT" />
 </svelte:head>
 
-<div class="flex flex-col py-4">
-	{#if requestApiKey}
-		<Intro onSubmit={onSubmitApiKey} />
-	{:else}
-		<Chats />
-		<TextInput onComplete={onEnterChatText} />
-	{/if}
-</div>
+{#if requestApiKey}
+	<Intro />
+{:else}
+	<div class="flex-1 overflow-y-scroll" id="bg">
+		<div class="flex min-h-0">
+			<Chats />
+		</div>
+	</div>
+{/if}
+<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
+
+<style>
+	#bg {
+		background-image: url('background.svg');
+		background-size: cover;
+		background-position: center;
+	}
+</style>
