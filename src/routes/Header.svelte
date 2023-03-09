@@ -4,19 +4,21 @@
 	import { db } from '../db';
 	import { browser } from '$app/environment';
 	import { liveQuery } from 'dexie';
-	let chatHistory = liveQuery(async () => {
+	let showHamburger = liveQuery(async () => {
 		if (!browser) return [];
 		// Sort by time
-		return await db.chats.orderBy('timestamp').reverse().toArray();
+		return (await db.chats.count()) > 0;
 	});
 </script>
 
 <div class="navbar bg-base-100 bg-opacity-50">
-	{#if $chatHistory && $chatHistory.length > 0}
-		<label for="drawer" class="btn btn-ghost drawer-button lg:hidden">
-			<Hamburger class="w-10 h-10" />
-		</label>
-	{/if}
+	<label
+		for="drawer"
+		class="btn btn-ghost drawer-button lg:hidden"
+		class:invisible={!showHamburger}
+	>
+		<Hamburger class="w-10 h-10" />
+	</label>
 	<div class="flex-1">
 		<span class="pl-4 font-semibold normal-case text-xl">CheapGPT</span>
 	</div>
