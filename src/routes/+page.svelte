@@ -8,8 +8,9 @@
 	import chats from './stores';
 	import { getResults } from '../main';
 
-	$: requestApiKey = browser && !apiKeyIsSet();
-	// $: requestApiKey = true; // For dev
+	const src = 'background.svg';
+
+	let requestApiKey = browser && !apiKeyIsSet();
 
 	const onSubmitApiKey = (apiKey: string) => {
 		setApiKey(apiKey);
@@ -22,8 +23,6 @@
 		chats.update(() => newChats);
 		getResults();
 	};
-
-	const src = 'background.svg';
 </script>
 
 <svelte:head>

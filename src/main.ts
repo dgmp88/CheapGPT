@@ -80,7 +80,7 @@ export function getApiKey() {
 }
 
 export function apiKeyIsSet() {
-	return !!getApiKey();
+	return getApiKey() !== null;
 }
 
 export function setApiKey(apiKey: string) {

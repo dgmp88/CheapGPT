@@ -1,7 +1,3 @@
-<script lang="ts">
-	import TextInput from './TextInput.svelte';
-</script>
-
 <article class="prose p-4">
 	<h2>Why does this exist?</h2>
 	<p>
