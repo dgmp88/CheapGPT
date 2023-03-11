@@ -35,6 +35,8 @@ export async function getResults() {
 
 	const ctrl = new AbortController();
 
+	let waiting = true;
+
 	fetchEventSource(url, {
 		method: 'POST',
 		headers,
@@ -50,8 +52,12 @@ export async function getResults() {
 
 			if (!id) {
 				id = response.id as string;
-				chat.content = ''; // clear placeholder
 				chat.id = id;
+			}
+
+			if (waiting) {
+				waiting = false;
+				chat.content = '';
 			}
 
 			const text = choice.delta.content;

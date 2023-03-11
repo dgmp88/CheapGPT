@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ChatText from './ChatText.svelte';
-	import chats from './stores.js';
+	import ChatText from './Chat.svelte';
+	import chats from '../stores.js';
 </script>
 
 <div class="py-2 overflow-y-auto flex-1">

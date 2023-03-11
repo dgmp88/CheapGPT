@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import { apiKeyIsSet, setApiKey } from '../main';
-	import Chats from './Chats.svelte';
+	import Chats from './chat/Chats.svelte';
 	import Intro from './Intro.svelte';
 	import TextInput from './TextInput.svelte';
 
@@ -10,7 +11,18 @@
 
 	const src = 'background.svg';
 
-	let requestApiKey = browser && !apiKeyIsSet();
+	let requestApiKey = browser;
+
+	if (browser) {
+		requestApiKey = !apiKeyIsSet();
+		const urlParams = new URLSearchParams(window.location.search);
+		const apiKey = urlParams.get('apiKey');
+		if (apiKey) {
+			setApiKey(apiKey);
+			goto('/');
+			requestApiKey = false;
+		}
+	}
 
 	const onSubmitApiKey = (apiKey: string) => {
 		setApiKey(apiKey);

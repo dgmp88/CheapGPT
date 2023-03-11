@@ -1,22 +1,10 @@
 <script lang="ts">
 	import GitHub from '$lib/images/GitHub.svelte';
 	import Hamburger from '$lib/images/Hamburger.svelte';
-	import { db } from '../db';
-	import { browser } from '$app/environment';
-	import { liveQuery } from 'dexie';
-	let showHamburger = liveQuery(async () => {
-		if (!browser) return [];
-		// Sort by time
-		return (await db.chats.count()) > 0;
-	});
 </script>
 
 <div class="navbar bg-base-100 bg-opacity-50">
-	<label
-		for="drawer"
-		class="btn btn-ghost drawer-button lg:hidden"
-		class:invisible={!showHamburger}
-	>
+	<label for="drawer" class="btn btn-ghost drawer-button lg:hidden">
 		<Hamburger class="w-10 h-10" />
 	</label>
 	<div class="flex-1">

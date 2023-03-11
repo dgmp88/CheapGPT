@@ -3,7 +3,6 @@
 	import { tick } from 'svelte';
 	export let onComplete: (value: string) => void;
 	let value = '';
-	$: value = '';
 	$: disabled = value.length === 0;
 
 	// Focus on page load
@@ -32,6 +31,7 @@
 					if (!disabled) {
 						onComplete(value);
 						value = '';
+						inputElement.parentNode.dataset.value = '';
 					}
 				}
 			}}

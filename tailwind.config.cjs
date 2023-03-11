@@ -9,11 +9,16 @@ module.exports = {
 		themes: [
 			{
 				mytheme: {
-					primary: '#2563eb',
+					// "#d9ed92, #b5e48c, #99d98c, #76c893, #52b69a,
+					//  #34a0a4, #168aad, #1a759f, #1e6091, #184e77",
+					primary: '#76c893',
+					'primary-content': 'white',
+					'neutral-content': 'white',
+					'base-content': '#eceaea',
 					secondary: '#db9053',
 					accent: '#ffc4df',
 					neutral: '#1A191F',
-					'base-100': '#402D48',
+					'base-100': '#184e77',
 					info: '#69ABCE',
 					success: '#23E792',
 					warning: '#BD630A',

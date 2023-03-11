@@ -12,16 +12,13 @@
 	</p>
 	<p>
 		I strongly recommend setting a <a href="https://platform.openai.com/account/billing/limits"
-			>usage limit</a
-		> you can afford to lose
+			>usage limit</a> you can afford to lose
 	</p>
 	<h3>Is it secure?</h3>
 	<p>
 		Nothing on this page is sent anywhere except to OpenAI. There is no tracking etc. See <a
-			href="https://github.com/dgmp88/CheapGPT">here</a
-		> for the full source code.
+			href="https://github.com/dgmp88/CheapGPT">here</a> for the full source code.
 	</p>
-	<p>It's unlikely but possible someone could get your key, so make sure to have a usage limit</p>
 
 	<label for="security-modal" class="btn btn-primary btn-sm text-center">More security info</label>
 
@@ -34,8 +31,7 @@
 				Your API key is stored in plain text in <a
 					href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
 					>localStorage</a
-				>. Someone with access to your computer could see it, or if someone managed to hack your
-				browser.
+				>. Someone with access to your computer could see it, or someone who hacked your browser.
 			</p>
 			<p>
 				Neither of those are terribly likely, and with a spend limit the worst that could happen is
