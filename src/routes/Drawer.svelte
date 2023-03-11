@@ -38,7 +38,7 @@
 					<button
 						class="max-w-full"
 						on:click={() => {
-							chats.update(() => chatLog.chats);
+							chats.set(chatLog.chats);
 							checked = false;
 						}}>
 						<p class="truncate">

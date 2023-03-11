@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ChatText from './Chat.svelte';
+	import Chat from './Chat.svelte';
 	import chats from '../stores.js';
 </script>
 
@@ -8,7 +8,7 @@
 		<div class="text-center">Send a message to begin...</div>
 	{:else}
 		{#each $chats as chat}
-			<ChatText {chat} />
+			<Chat {chat} />
 		{/each}
 	{/if}
 </div>

@@ -6,38 +6,34 @@
 	export let chat: Chat;
 
 	const styles = chat.role === 'assistant' ? 'bg-white bg-opacity-10' : '';
-
-	let { content } = chat;
-	console.log(content);
-	content = content.trim();
-
 	// Split into text/code block
-	const ticks = [...content.matchAll(/```/g)].map((m) => m.index);
-
 	type Section = {
 		content: string;
 		isCode: boolean;
 	};
 
-	const sections: Section[] = [];
+	function getSections(content: string) {
+		const sections: Section[] = [];
+		let lastIndex = 0;
+		let inTicks = false;
 
-	let lastIndex = 0;
-	let inTicks = false;
+		while (true) {
+			const ticksIndex = content.indexOf('```', lastIndex);
 
-	while (true) {
-		const ticksIndex = content.indexOf('```', lastIndex);
+			if (ticksIndex === -1) {
+				// Reached the end of the text
+				sections.push({ content: content.slice(lastIndex).trim(), isCode: inTicks });
+				break;
+			}
 
-		if (ticksIndex === -1) {
-			// Reached the end of the text
-			sections.push({ content: content.slice(lastIndex).trim(), isCode: inTicks });
-			break;
+			sections.push({ content: content.slice(lastIndex, ticksIndex).trim(), isCode: inTicks });
+
+			inTicks = !inTicks;
+			lastIndex = ticksIndex + 3;
 		}
-
-		sections.push({ content: content.slice(lastIndex, ticksIndex).trim(), isCode: inTicks });
-
-		inTicks = !inTicks;
-		lastIndex = ticksIndex + 3;
+		return sections;
 	}
+	$: sections = getSections(chat.content.trim());
 </script>
 
 <div class={`p-4 ${styles}`}>
