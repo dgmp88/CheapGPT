@@ -22,8 +22,8 @@
 
 	<div class="drawer-side">
 		<label for="drawer" class="drawer-overlay" />
-		<ul class="menu p-4 w-80 bg-gray-800 bg-opacity-60 text-base-content overflow-hidden">
-			<li class="text-center">
+		<ul class="menu p-4 w-80 bg-base-100 bg-opacity-90 text-base-content overflow-hidden">
+			<li class="text-center pb-2">
 				<button
 					class="mx-auto btn font-bold"
 					on:click={() => {

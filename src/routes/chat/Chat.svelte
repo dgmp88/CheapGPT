@@ -5,7 +5,8 @@
 
 	export let chat: Chat;
 
-	const styles = chat.role === 'assistant' ? 'bg-white bg-opacity-10' : '';
+	const styles = chat.role === 'assistant' ? 'bg-black bg-opacity-20' : '';
+
 	// Split into text/code block
 	type Section = {
 		content: string;
@@ -33,7 +34,7 @@
 		}
 		return sections;
 	}
-	$: sections = getSections(chat.content.trim());
+	$: sections = getSections(chat.content);
 </script>
 
 <div class={`p-4 ${styles}`}>
