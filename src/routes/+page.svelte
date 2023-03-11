@@ -19,7 +19,7 @@
 		const apiKey = urlParams.get('apiKey');
 		if (apiKey) {
 			setApiKey(apiKey);
-			goto('/');
+			goto('./');
 			requestApiKey = false;
 		}
 	}
