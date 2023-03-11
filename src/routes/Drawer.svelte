@@ -22,7 +22,7 @@
 
 	<div class="drawer-side">
 		<label for="drawer" class="drawer-overlay" />
-		<ul class="menu p-4 w-80 bg-base-100 bg-opacity-90 text-base-content overflow-hidden">
+		<ul class="menu p-4 w-80 bg-secondary bg-opacity-95 text-base-content overflow-hidden">
 			<li class="text-center pb-2">
 				<button
 					class="mx-auto btn font-bold"

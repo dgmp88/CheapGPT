@@ -15,10 +15,11 @@ module.exports = {
 					'primary-content': 'white',
 					'neutral-content': 'white',
 					'base-content': '#eceaea',
-					secondary: '#db9053',
+					secondary: '#168aad',
 					accent: '#ffc4df',
 					neutral: '#1A191F',
 					'base-100': '#184e77',
+
 					info: '#69ABCE',
 					success: '#23E792',
 					warning: '#BD630A',
