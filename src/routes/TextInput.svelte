@@ -44,7 +44,7 @@
 				}
 			}}
 			{disabled}>
-			<SendIcon class="w-10 h-10 p-1" />
+			<SendIcon class="w-8 h-10 p-0 translate-x-[2px]" />
 		</button>
 	</div>
 </div>
