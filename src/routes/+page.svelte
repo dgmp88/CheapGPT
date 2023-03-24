@@ -45,7 +45,7 @@
 {#if requestApiKey}
 	<Intro />
 {:else}
-	<div class="flex-1 overflow-y-scroll" id="bg" style="background-image:url({src})">
+	<div class="flex-1 overflow-y-scroll pb-10" id="bg" style="background-image:url({src})">
 		<div class="flex min-h-0">
 			<Chats />
 		</div>

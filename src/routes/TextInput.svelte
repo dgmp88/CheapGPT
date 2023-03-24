@@ -6,7 +6,7 @@
 	$: disabled = value.length === 0;
 
 	// Focus on page load
-	let inputElement: HTMLTextAreaElement;
+	let inputElement: HTMLDivElement;
 	const textFocus = async () => {
 		await tick();
 		if (inputElement) inputElement.focus();
@@ -14,78 +14,37 @@
 	textFocus();
 </script>
 
-<div class="mt-auto w-full p-3 flex">
-	<label class="input-sizer stacked w-full">
-		<textarea
-			class="textarea textarea-primary"
-			bind:this={inputElement}
-			on:input={(event) => {
-				if (inputElement.parentNode) {
-					inputElement.parentNode.dataset.value = inputElement.value;
+<div class="fixed bottom-0 left-0 flex w-full p-2">
+	<div
+		class="textarea textarea-primary items-start justify-start w-full"
+		contenteditable="true"
+		bind:this={inputElement}
+		bind:innerHTML={value}
+		on:keydown={(event) => {
+			// We're done if the user presses enter without shift
+			if (event.key == 'Enter' && !event.shiftKey) {
+				event.preventDefault();
+				if (!disabled) {
+					// We could bind:innerText to avoid parsing <br> when it's released, probably next time you read thiss
+					// https://github.com/sveltejs/svelte/commit/aa4d0fc2643bdf968dbd72bceda1cce8bdfb5306
+					onComplete(value.replace('<br>', '\n'));
+					value = '';
 				}
-			}}
-			bind:value
-			on:keydown={(event) => {
-				if (event.key == 'Enter' && !event.shiftKey) {
-					event.preventDefault();
-					if (!disabled) {
-						onComplete(value);
-						value = '';
-						inputElement.parentNode.dataset.value = '';
-					}
-				}
-			}}
-			rows="1"
-			placeholder="Type a message..."
-		/>
-	</label>
-
-	<button
-		class="btn btn-circle btn-primary ml-3"
-		on:click={(event) => {
-			if (!disabled) {
-				onComplete(value);
-				value = '';
 			}
-		}}
-		{disabled}
-	>
-		<SendIcon class="w-10 h-10 p-1" />
-	</button>
+		}} />
+
+	<div>
+		<button
+			class="btn btn-circle btn-primary ml-3"
+			on:click={(event) => {
+				console.log('Clicked');
+				if (!disabled) {
+					onComplete(value);
+					value = '';
+				}
+			}}
+			{disabled}>
+			<SendIcon class="w-10 h-10 p-1" />
+		</button>
+	</div>
 </div>
-
-<style>
-	/* https://css-tricks.com/auto-growing-inputs-textareas/ */
-	/* Modified from  */
-	/* https://codepen.io/shshaw/pen/bGNJJBE */
-
-	.input-sizer {
-		display: inline-grid;
-		vertical-align: top;
-		align-items: center;
-		position: relative;
-	}
-
-	.input-sizer::after {
-		content: attr(data-value) ' ';
-		visibility: hidden;
-		white-space: pre-wrap;
-	}
-
-	.input-sizer::after,
-	textarea {
-		width: auto;
-		min-width: 1em;
-		font: inherit;
-		resize: none;
-	}
-
-	.stacked {
-		align-items: stretch;
-	}
-
-	.stacked::after,
-	textarea {
-		grid-area: 2 / 1;
-	}
-</style>
