@@ -14,7 +14,7 @@
 	textFocus();
 </script>
 
-<div class="fixed bottom-0 left-0 flex w-full p-2">
+<div class="fixed bottom-0 left-0 flex p-2 w-full lg:pl-[21rem]">
 	<div
 		class="textarea textarea-primary items-start justify-start w-full"
 		contenteditable="true"
