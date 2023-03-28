@@ -27,7 +27,8 @@
 				if (!disabled) {
 					// We could bind:innerText to avoid parsing <br> when it's released, probably next time you read thiss
 					// https://github.com/sveltejs/svelte/commit/aa4d0fc2643bdf968dbd72bceda1cce8bdfb5306
-					onComplete(value.replace('<br>', '\n'));
+					const formatted = value.replace(/(&nbsp;)|(<br>)/gi, '');
+					onComplete(formatted);
 					value = '';
 				}
 			}
