@@ -37,7 +37,7 @@
 	$: sections = getSections(chat.content);
 </script>
 
-<div class={`p-4 ${styles}`}>
+<div class={`p-10 ${styles}`}>
 	{#each sections as section}
 		{#if section.isCode}
 			<pre>
