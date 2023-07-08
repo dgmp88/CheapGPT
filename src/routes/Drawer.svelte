@@ -6,7 +6,7 @@
 	import { getModel, setModel, type GPTModel } from '../api';
 
 	// Workaround for sveltekit
-	let checked = true;
+	let checked = false;
 	let chatHistory = liveQuery(async () => {
 		if (!browser) return [];
 		// Sort by time
