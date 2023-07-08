@@ -3,6 +3,9 @@
 	import { tick } from 'svelte';
 	export let onComplete: (value: string) => void;
 	let value = '';
+	const minRows = 3;
+	const maxRows = 10;
+	let rows = 3;
 	$: disabled = value.length === 0;
 
 	// Focus on page load
@@ -14,14 +17,16 @@
 	textFocus();
 </script>
 
-<div class="fixed bottom-0 left-0 flex bg-base-100 p-4 w-full lg:pl-[21rem] pr-4">
-	<div
-		class="textarea textarea-primary items-start justify-start w-full"
-		contenteditable="true"
-		bind:this={inputElement}
-		bind:innerHTML={value}
+<div class="fixed bottom-0 left-0 flex items-center bg-base-100 p-4 w-full lg:pl-[21rem] pr-4">
+	<textarea
+		class="textarea textarea-primary w-full resize-none"
+		{rows}
+		bind:value
 		on:keydown={(event) => {
 			// We're done if the user presses enter without shift
+			const lines = value.split(/\r\n|\r|\n/).length;
+			rows = Math.min(Math.max(minRows, lines), maxRows);
+
 			if (event.key == 'Enter' && !event.shiftKey) {
 				event.preventDefault();
 				if (!disabled) {
