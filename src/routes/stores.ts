@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
-import type { Chat } from '../types';
+import type { Message } from '../types';
 
-const chats = writable<Chat[]>([]);
+const chats = writable<Message[]>([]);
 
 export default chats;

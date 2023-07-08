@@ -37,8 +37,9 @@
 	"type": "module",
 	"dependencies": {
 		"@microsoft/fetch-event-source": "^2.0.1",
-		"daisyui": "^2.51.3",
+		"daisyui": "^3.2.1",
 		"dexie": "^3.2.3",
-		"highlight.js": "^11.7.0"
+		"highlight.js": "^11.7.0",
+		"theme-change": "^2.5.0"
 	}
 }

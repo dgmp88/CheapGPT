@@ -1,9 +1,9 @@
 import Dexie, { type Table } from 'dexie';
-import type { Chat } from './types';
+import type { Message } from './types';
 
 export interface ChatLog {
 	id: string;
-	chats: Chat[];
+	chats: Message[];
 	timestamp: Date;
 }
 

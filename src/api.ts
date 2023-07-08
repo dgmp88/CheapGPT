@@ -2,7 +2,7 @@ import { fetchEventSource } from '@microsoft/fetch-event-source';
 
 import { get } from 'svelte/store';
 
-import type { Chat } from './types';
+import type { Message } from './types';
 import chats from './routes/stores';
 import { db } from './db';
 
@@ -26,7 +26,7 @@ export async function getResults() {
 	// Create a new chat
 	// The ID could be null until at least 1 response has come through
 	let id = currentChats.find((chat) => chat.id)?.id;
-	const chat: Chat = {
+	const chat: Message = {
 		role: 'assistant',
 		content: '...',
 		id,
