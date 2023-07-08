@@ -9,10 +9,11 @@ import { db } from './db';
 export async function getResults() {
 	const currentChats = get(chats);
 	const body = {
-		model: 'gpt-3.5-turbo',
+		model: getModel(),
 		messages: currentChats.map((chat) => ({ role: chat.role, content: chat.content })),
 		stream: true
 	};
+	console.log('body', body);
 
 	const token = getApiKey();
 
@@ -91,4 +92,16 @@ export function apiKeyIsSet() {
 
 export function setApiKey(apiKey: string) {
 	localStorage.setItem('apiKey', apiKey);
+}
+
+export type GPTModel = 'gpt-3.5-turbo' | 'gpt-4';
+
+export function setModel(model: GPTModel) {
+	console.log('set model to', model);
+	localStorage.setItem('model', model);
+}
+
+export function getModel(): GPTModel {
+	// Default to 3.5
+	return (localStorage.getItem('model') as GPTModel) || 'gpt-3.5-turbo';
 }

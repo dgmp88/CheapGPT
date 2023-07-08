@@ -3,15 +3,21 @@
 	import { liveQuery } from 'dexie';
 	import { db } from '../db';
 	import chats from './stores';
+	import { getModel, setModel, type GPTModel } from '../api';
 
 	// Workaround for sveltekit
-	let checked = false;
+	let checked = true;
 	let chatHistory = liveQuery(async () => {
 		if (!browser) return [];
 		// Sort by time
 		const results = await db.chats.orderBy('timestamp').reverse().toArray();
 		return results;
 	});
+
+	let model: GPTModel = 'gpt-3.5-turbo';
+	if (browser) {
+		model = getModel();
+	}
 </script>
 
 <div class="drawer drawer-mobile">
@@ -25,7 +31,7 @@
 		<ul class="menu p-4 w-80 bg-secondary bg-opacity-95 text-base-content overflow-hidden">
 			<li class="text-center pb-2">
 				<button
-					class="mx-auto btn font-bold"
+					class="btn font-normal w-fit mx-auto"
 					on:click={() => {
 						chats.update(() => []);
 						checked = false;
@@ -47,6 +53,19 @@
 					</button>
 				</li>
 			{/each}
+			<div class="flex-1" />
+			<div class="text-xs flex items-center justify-center gap-2">
+				<span> GPT3.5 </span>
+				<input
+					type="checkbox"
+					class="toggle"
+					checked={model === 'gpt-4'}
+					on:click={() => {
+						model = model === 'gpt-4' ? 'gpt-3.5-turbo' : 'gpt-4';
+						setModel(model);
+					}} />
+				<span> GPT4 </span>
+			</div>
 		</ul>
 	</div>
 </div>

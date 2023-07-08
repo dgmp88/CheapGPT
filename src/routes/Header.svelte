@@ -8,7 +8,7 @@
 		<Hamburger class="w-10 h-10" />
 	</label>
 	<div class="flex-1">
-		<span class="pl-4 font-semibold normal-case text-xl">CheapGPT</span>
+		<span class="pl-4 normal-case text-xl">CheapGPT</span>
 	</div>
 	<div class="flex-none">
 		<!-- A link to github with  -->

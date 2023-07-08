@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import { apiKeyIsSet, setApiKey } from '../main';
+	import { apiKeyIsSet, setApiKey } from '../api';
 	import Chats from './chat/Chats.svelte';
 	import Intro from './Intro.svelte';
 	import TextInput from './TextInput.svelte';
 
 	import chats from './stores';
-	import { getResults } from '../main';
+	import { getResults } from '../api';
 
 	const src = 'background.svg';
 

@@ -12,7 +12,5 @@
 		stroke="currentColor"
 		stroke-LineCap="round"
 		stroke-Linejoin="round"
-		stroke-Width="1.5"
-		d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"
-	/></svg
->
+		stroke-Width="0.8"
+		d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" /></svg>

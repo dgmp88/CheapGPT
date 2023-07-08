@@ -3,7 +3,7 @@
 	import chats from '../stores.js';
 </script>
 
-<div class="py-2 overflow-y-auto flex-1">
+<div class="py-5 overflow-y-auto flex-1 w-[100px]">
 	{#if $chats.length === 0}
 		<div class="text-center">Send a message to begin...</div>
 	{:else}
