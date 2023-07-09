@@ -31,7 +31,7 @@
 					+ new chat
 				</button>
 			</div>
-			<div class="flex-1">
+			<div class="flex-1 overflow-auto">
 				<ChatHistory
 					closeDrawer={() => {
 						open = false;
