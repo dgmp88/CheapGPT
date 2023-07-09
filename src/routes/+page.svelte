@@ -43,7 +43,7 @@
 {#if requestApiKey}
 	<Intro />
 {:else}
-	<div class="flex-1 overflow-y-auto pb-10" id="bg">
+	<div class="flex-1 overflow-y-auto pb-20" id="bg">
 		<div class="flex min-h-0">
 			<Chat />
 		</div>
