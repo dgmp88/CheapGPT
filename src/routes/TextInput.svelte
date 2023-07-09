@@ -23,10 +23,6 @@
 		{rows}
 		bind:value
 		on:keydown={(event) => {
-			// We're done if the user presses enter without shift
-			const lines = value.split(/\r\n|\r|\n/).length;
-			rows = Math.min(Math.max(minRows, lines), maxRows);
-
 			if (event.key == 'Enter' && !event.shiftKey) {
 				event.preventDefault();
 				if (!disabled) {
@@ -37,6 +33,10 @@
 					value = '';
 				}
 			}
+
+			// We're done if the user presses enter without shift
+			const lines = value.split(/\r\n|\r|\n/).length;
+			rows = Math.min(Math.max(minRows, lines), maxRows);
 		}} />
 
 	<div>
