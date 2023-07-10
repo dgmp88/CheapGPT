@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Message from './Message.svelte';
-	import chats from '../stores.js';
+	import chats from '../../stores.js';
 </script>
 
 <div class="py-5 overflow-y-auto flex-1 w-[100px]">

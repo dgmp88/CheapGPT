@@ -2,8 +2,8 @@
 	import { browser } from '$app/environment';
 	import { liveQuery } from 'dexie';
 	import { db } from '../../db';
-	import chats from '../stores';
-	import { getModel, setModel, type GPTModel } from '../../api';
+	import chats from '../../stores';
+	import { getModel, type GPTModel } from '../../api';
 
 	export let closeDrawer: () => void;
 

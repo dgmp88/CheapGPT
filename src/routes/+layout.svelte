@@ -1,6 +1,6 @@
 <script>
-	import Drawer from './Drawer.svelte';
-	import Header from './Header.svelte';
+	import Drawer from './index/Drawer.svelte';
+	import Header from './index/Header.svelte';
 	import './styles.css';
 </script>
 

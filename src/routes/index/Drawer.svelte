@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 
-	import chats from './stores';
-	import { getModel, setModel, type GPTModel } from '../api';
-	import ChatHistory from './chat/ChatHistory.svelte';
+	import chats from '../../stores';
+	import { getModel, setModel, type GPTModel } from '../../api';
+	import ChatHistory from '../chat/ChatHistory.svelte';
 
 	let open = false;
 

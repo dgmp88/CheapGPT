@@ -3,10 +3,10 @@
 	import { goto } from '$app/navigation';
 	import { apiKeyIsSet, setApiKey } from '../api';
 	import Chat from './chat/Chat.svelte';
-	import Intro from './Intro.svelte';
-	import TextInput from './TextInput.svelte';
+	import Intro from './index/Intro.svelte';
+	import TextInput from './chat/TextInput.svelte';
 
-	import chats from './stores';
+	import chats from '../stores';
 	import { getResults } from '../api';
 
 	let requestApiKey = browser;

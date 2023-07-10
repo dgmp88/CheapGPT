@@ -3,7 +3,7 @@ import { fetchEventSource } from '@microsoft/fetch-event-source';
 import { get } from 'svelte/store';
 
 import type { Message } from './types';
-import chats from './routes/stores';
+import chats from './stores';
 import { db } from './db';
 
 export async function getResults() {
