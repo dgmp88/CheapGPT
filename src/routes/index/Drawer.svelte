@@ -15,7 +15,7 @@
 
 <div class="drawer lg:drawer-open">
 	<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={open} />
-	<div class="drawer-content flex flex-col items-center justify-center">
+	<div class="drawer-content">
 		<slot />
 	</div>
 	<div class="drawer-side">
@@ -31,7 +31,7 @@
 					+ new chat
 				</button>
 			</div>
-			<div class="flex-1 overflow-auto">
+			<div class="flex-1 overflow-y-auto">
 				<ChatHistory
 					closeDrawer={() => {
 						open = false;

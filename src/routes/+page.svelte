@@ -5,6 +5,9 @@
 	import Chat from './chat/Chat.svelte';
 	import Intro from './index/Intro.svelte';
 	import TextInput from './chat/TextInput.svelte';
+	import Drawer from './index/Drawer.svelte';
+	import Header from './index/Header.svelte';
+	import './styles.css';
 
 	import chats from '../stores';
 	import { getResults } from '../api';
@@ -40,16 +43,18 @@
 	<meta name="description" content="CheapGPT" />
 </svelte:head>
 
-{#if requestApiKey}
-	<Intro />
-{:else}
-	<div class="flex-1 overflow-y-auto pb-20" id="bg">
-		<div class="flex min-h-0">
+<Drawer>
+	<div class="flex h-screen w-screen flex-col">
+		<Header />
+
+		{#if requestApiKey}
+			<Intro />
+		{:else}
 			<Chat />
-		</div>
+		{/if}
+		<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
 	</div>
-{/if}
-<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
+</Drawer>
 
 <style>
 	#bg {
