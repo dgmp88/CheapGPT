@@ -55,10 +55,3 @@
 		<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
 	</div>
 </Drawer>
-
-<style>
-	#bg {
-		background-size: cover;
-		background-position: center;
-	}
-</style>
