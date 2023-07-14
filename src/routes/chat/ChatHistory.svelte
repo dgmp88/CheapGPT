@@ -25,7 +25,7 @@
 {#each $chatHistory || [] as chatlog}
 	<div class="w-full truncate">
 		<button
-			class="btn btn-ghost lowercase w-full text-left truncate justify-start"
+			class="btn btn-ghost normal-case w-full text-left truncate justify-start"
 			on:click={() => {
 				chats.set(chatlog.chats);
 				closeDrawer();
