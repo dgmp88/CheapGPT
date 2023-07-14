@@ -39,7 +39,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Cheap GPT</title>
 	<meta name="description" content="CheapGPT" />
 </svelte:head>
 
