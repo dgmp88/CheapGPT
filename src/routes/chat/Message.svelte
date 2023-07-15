@@ -41,8 +41,10 @@
 	{#each sections as section}
 		{#if section.isCode}
 			<pre>
-			<code class="hljs rounded">{@html hljs.highlightAuto(section.content).value.trim()}</code>
-				</pre>
+				<code class="hljs rounded">
+					{@html hljs.highlightAuto(section.content).value.trim()}
+				</code>
+			</pre>
 		{:else}
 			<div class="whitespace-pre-wrap">
 				{section.content}

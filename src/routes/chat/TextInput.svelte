@@ -17,7 +17,7 @@
 	textFocus();
 </script>
 
-<div class="fixed bottom-0 left-0 flex items-center bg-base-100 p-4 w-full lg:pl-[21rem] pr-4">
+<div class="flex items-center bg-base-100 p-4 pr-4">
 	<textarea
 		class="textarea textarea-primary w-full resize-none"
 		{rows}

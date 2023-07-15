@@ -3,10 +3,13 @@
 	import { goto } from '$app/navigation';
 	import { apiKeyIsSet, setApiKey } from '../api';
 	import Chat from './chat/Chat.svelte';
-	import Intro from './Intro.svelte';
-	import TextInput from './TextInput.svelte';
+	import Intro from './index/Intro.svelte';
+	import TextInput from './chat/TextInput.svelte';
+	import Drawer from './index/Drawer.svelte';
+	import Header from './index/Header.svelte';
+	import './styles.css';
 
-	import chats from './stores';
+	import chats from '../stores';
 	import { getResults } from '../api';
 
 	let requestApiKey = browser;
@@ -36,24 +39,19 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Cheap GPT</title>
 	<meta name="description" content="CheapGPT" />
 </svelte:head>
 
-{#if requestApiKey}
-	<Intro />
-{:else}
-	<div class="flex-1 overflow-y-auto pb-20" id="bg">
-		<div class="flex min-h-0">
-			<Chat />
-		</div>
-	</div>
-{/if}
-<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
+<Drawer>
+	<div class="flex h-screen w-screen flex-col">
+		<Header />
 
-<style>
-	#bg {
-		background-size: cover;
-		background-position: center;
-	}
-</style>
+		{#if requestApiKey}
+			<Intro />
+		{:else}
+			<Chat />
+		{/if}
+		<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
+	</div>
+</Drawer>
