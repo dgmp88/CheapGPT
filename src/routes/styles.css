@@ -7,3 +7,8 @@ body,
 p {
 	font-family: 'Montserrat', sans-serif;
 }
+
+pre,
+code {
+	@apply whitespace-pre-wrap;
+}

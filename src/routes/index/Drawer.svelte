@@ -13,9 +13,9 @@
 	}
 </script>
 
-<div class="drawer lg:drawer-open">
+<div class="drawer lg:drawer-open w-screen">
 	<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={open} />
-	<div class="drawer-content h-screen w-full flex flex-col">
+	<div class="drawer-content h-screen w-full flex flex-col overflow-hidden">
 		<slot />
 	</div>
 	<div class="drawer-side">
