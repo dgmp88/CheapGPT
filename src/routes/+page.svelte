@@ -44,14 +44,12 @@
 </svelte:head>
 
 <Drawer>
-	<div class="flex h-screen w-screen flex-col">
-		<Header />
+	<Header />
 
-		{#if requestApiKey}
-			<Intro />
-		{:else}
-			<Chat />
-		{/if}
-		<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
-	</div>
+	{#if requestApiKey}
+		<Intro />
+	{:else}
+		<Chat />
+	{/if}
+	<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
 </Drawer>

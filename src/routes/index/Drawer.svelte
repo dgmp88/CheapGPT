@@ -15,7 +15,7 @@
 
 <div class="drawer lg:drawer-open">
 	<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={open} />
-	<div class="drawer-content">
+	<div class="drawer-content h-screen w-full flex flex-col">
 		<slot />
 	</div>
 	<div class="drawer-side">
