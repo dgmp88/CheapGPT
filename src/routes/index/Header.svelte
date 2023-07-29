@@ -28,7 +28,10 @@
 	<button
 		class="text-lg flex gap-2 pr-4"
 		data-toggle-theme="fantasy,forest"
-		data-act-class="ACTIVECLASS">
+		data-act-class="ACTIVECLASS"
+		on:click={() => {
+			darkMode = !darkMode;
+		}}>
 		🌞
 		<input type="checkbox" class="toggle" bind:checked={darkMode} />
 		🌚

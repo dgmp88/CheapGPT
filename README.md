@@ -19,3 +19,10 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## To do:
+
+- Fix day / night button
+- Fix code output
+- Fix nav away from page issue
+  - ? switch to using Vercel ?
