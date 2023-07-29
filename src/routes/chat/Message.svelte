@@ -42,7 +42,7 @@
 		{#if section.isCode}
 			<pre>
 				<code class="hljs rounded-xl">
-					{@html hljs.highlightAuto(section.content).value.trim()}
+{@html hljs.highlightAuto(section.content).value}
 				</code>
 			</pre>
 		{:else}
