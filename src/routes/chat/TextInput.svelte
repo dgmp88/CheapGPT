@@ -14,6 +14,12 @@
 		await tick();
 		if (inputElement) inputElement.focus();
 	};
+
+	const setRows = () => {
+		const lines = value.split(/\r\n|\r|\n/).length;
+		rows = Math.min(Math.max(minRows, lines), maxRows);
+	};
+
 	textFocus();
 </script>
 
@@ -34,9 +40,7 @@
 				}
 			}
 
-			// We're done if the user presses enter without shift
-			const lines = value.split(/\r\n|\r|\n/).length;
-			rows = Math.min(Math.max(minRows, lines), maxRows);
+			setRows();
 		}} />
 
 	<div>
@@ -48,6 +52,7 @@
 					onComplete(value);
 					value = '';
 				}
+				setRows();
 			}}
 			{disabled}>
 			<SendIcon class="w-8 h-10 p-0 translate-x-[2px]" />
