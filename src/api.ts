@@ -76,7 +76,8 @@ export async function getResults() {
 				...chats.slice(0, -1),
 				{ content: 'Error :(. Check your API key or the console perhaps?', role: 'assistant' }
 			]);
-			console.error(err);
+			console.error('error', err);
+			console.error('error', err.data);
 			throw new Error('woopsie');
 		}
 	});
@@ -86,8 +87,17 @@ export function getApiKey() {
 	return localStorage.getItem('apiKey');
 }
 
-export function apiKeyIsSet() {
-	return getApiKey() !== null;
+export function getApiKeyStatus(): 'unset' | 'set' | 'georges' {
+	const key = getApiKey();
+	if (key === null) {
+		return 'unset';
+	}
+	if (key === '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') {
+		// if (key === 'sk-LHc') {
+		return 'georges';
+	}
+
+	return 'set';
 }
 
 export function setApiKey(apiKey: string) {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import { apiKeyIsSet, setApiKey } from '../api';
+	import { getApiKeyStatus, setApiKey } from '../api';
 	import Chat from './chat/Chat.svelte';
 	import Intro from './index/Intro.svelte';
 	import TextInput from './chat/TextInput.svelte';
@@ -11,23 +11,24 @@
 
 	import chats from '../stores';
 	import { getResults } from '../api';
+	import UsingGeorgesKey from './chat/UsingGeorgesKey.svelte';
 
-	let requestApiKey = browser;
+	let status = 'set';
 
 	if (browser) {
-		requestApiKey = !apiKeyIsSet();
+		status = getApiKeyStatus();
 		const urlParams = new URLSearchParams(window.location.search);
 		const apiKey = urlParams.get('apiKey');
 		if (apiKey) {
 			setApiKey(apiKey);
 			goto('./');
-			requestApiKey = false;
+			status = getApiKeyStatus();
 		}
 	}
 
 	const onSubmitApiKey = (apiKey: string) => {
 		setApiKey(apiKey);
-		requestApiKey = false;
+		status = getApiKeyStatus();
 	};
 
 	const onEnterChatText = (text: string) => {
@@ -46,10 +47,12 @@
 <Drawer>
 	<Header />
 
-	{#if requestApiKey}
+	{#if status === 'unset'}
 		<Intro />
+	{:else if status === 'georges'}
+		<UsingGeorgesKey />
 	{:else}
 		<Chat />
 	{/if}
-	<TextInput onComplete={requestApiKey ? onSubmitApiKey : onEnterChatText} />
+	<TextInput onComplete={status === 'set' ? onEnterChatText : onSubmitApiKey} />
 </Drawer>
