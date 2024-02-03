@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 
 	import chats from '../../stores';
-	import { getModel, setModel, type GPTModel } from '../../api';
+	import { getModel, setModel, type GPTModel, GPT4, GPT3 } from '../../api';
 	import ChatHistory from '../chat/ChatHistory.svelte';
 
 	let open = false;
@@ -42,9 +42,9 @@
 				<input
 					type="checkbox"
 					class="toggle"
-					checked={model === 'gpt-4'}
+					checked={model === GPT4}
 					on:click={() => {
-						model = model === 'gpt-4' ? 'gpt-3.5-turbo' : 'gpt-4';
+						model = model === GPT4 ? GPT3 : GPT4;
 						setModel(model);
 					}} />
 				<span> gpt4 </span>

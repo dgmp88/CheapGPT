@@ -104,7 +104,11 @@ export function setApiKey(apiKey: string) {
 	localStorage.setItem('apiKey', apiKey);
 }
 
-export type GPTModel = 'gpt-3.5-turbo' | 'gpt-4';
+export const GPT3 = 'gpt-3.5-turbo';
+export const GPT4 = 'gpt-4-0125-preview';
+const models = [GPT3, GPT4];
+
+export type GPTModel = (typeof models)[number];
 
 export function setModel(model: GPTModel) {
 	console.log('set model to', model);
@@ -113,5 +117,9 @@ export function setModel(model: GPTModel) {
 
 export function getModel(): GPTModel {
 	// Default to 3.5
-	return (localStorage.getItem('model') as GPTModel) || 'gpt-3.5-turbo';
+	const res = localStorage.getItem('model');
+	if (models.includes(res as GPTModel)) {
+		return res as GPTModel;
+	}
+	return GPT4;
 }
